@@ -9,7 +9,7 @@ const authRoutes = require('./routes/auth-routes')
 // const {DATABASE_URL, PORT} = require('./config')
 mongoose.Promise = global.Promise
 
-dotenv.config({path: './.env'});
+dotenv.config({path: './variables.env'});
 
 const app = express()
 
