@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <meta name="description" content="Login for gratitude journal app">
+  <title>Login - Gratitude Journal</title>
+  <link rel="stylesheet" href="https://use.typekit.net/eie3jka.css">
+  <link rel="stylesheet" href="dist/style.css">
+  <script src="https://use.fontawesome.com/1f0d3c9294.js"></script>
+</head>
+
+<body class="signin-body center-screen-parent">
+
+  <div class="center-screen">
+
+    <header class='flex-container'>
+      <h1><span class="g">Gratitude</span> <span class="j">Journal</span></h1>
+    </header>
+
+    <main>
+      <div class="login-container">
+
+        <form action="/login" method="post" class='flex-container'>
+
+          <label for="Username">Username</label>
+          <input class="input field js-login" type="text" name="username" required/><br>
+
+          <label for="password">Password</label>
+          <input class="input field js-login-password" type="password" required/><br>
+
+          <input type="submit" class="login-button" value="Log in" />
+          <div class="login-meta">Don't have an account? <a class="signup" href="signup.html">Sign up here</a></div>
+
+        </form>
+
+      </div>
+    </main>
+
+    <footer class="made-by">
+      Made with <span class="fa fa-heart"></span> by <a href="http://travoka.do">travoka.do</a>
+    </footer>
+
+  </div>
+  <script src="https://code.jquery.com/jquery-3.1.0.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.18.1/moment.min.js"></script>
+  <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+  <script src="dist/index.js"></script>
+</body>
+
+</html>

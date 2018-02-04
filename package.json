@@ -1,0 +1,39 @@
+{
+  "name": "full-journal",
+  "version": "1.0.0",
+  "description": "gratitude journal",
+  "main": "server.js",
+  "scripts": {
+    "test": "mocha",
+    "start": "nodemon server.js"
+  },
+  "author": "Trine",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.18.2",
+    "chai-http": "^3.0.0",
+    "dotenv": "^5.0.0",
+    "express": "^4.16.2",
+    "faker": "^4.1.0",
+    "hash": "^0.2.0",
+    "jsonwebtoken": "^8.1.0",
+    "moment": "^2.19.1",
+    "mongoose": "^4.12.6",
+    "morgan": "^1.9.0",
+    "nodemon": "^1.14.11",
+    "password-hash": "^1.2.2"
+  },
+  "devDependencies": {
+    "browser-sync": "^2.18.13",
+    "chai": "^4.1.2",
+    "gulp": "^3.9.1",
+    "gulp-autoprefixer": "^4.1.0",
+    "gulp-clean-css": "^3.9.0",
+    "gulp-js-minify": "0.0.3",
+    "gulp-plumber": "^1.1.0",
+    "gulp-sass": "^3.1.0",
+    "gulp-uglifyes": "^0.1.2",
+    "gulp-util": "^3.0.8",
+    "mocha": "^4.1.0"
+  }
+}

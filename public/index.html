@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <meta name="description" content="Gratitude journal app">
+  <title>App - Gratitude Journal</title>
+  <link rel="stylesheet" href="https://use.typekit.net/eie3jka.css">
+  <link rel="stylesheet" href="dist/style.css">
+  <script src="https://use.fontawesome.com/1f0d3c9294.js"></script>
+</head>
+
+<body>
+
+  <nav class="navigation">
+    <h1><span class="g">Gratitude</span> <span class="j">Journal</span></h1>
+    <button class="logout logout-button">Logout</button>
+  </nav>
+
+  <section class="flex-container main-flex-container">
+    <form class="new-entry">
+      <div class="gratefuls">
+        <textarea id="first-grateful" class="small-textarea" cols="37" placeholder="Today I am grateful for..." wrap="hard"></textarea>
+      </div>
+      <button class="entry-button submit-button" type="submit"><span class="fa fa-check"></span>save</button>
+    </form>
+    <h2 class="entries-header hidden">older entries</h2>
+    <div class="entries" id="main"></div>
+  </section>
+
+  <footer class="made-by">
+    Made with <span class="fa fa-heart"></span> by <a href="http://travoka.do">travoka.do</a>
+  </footer>
+
+
+  <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.18.1/moment.min.js"></script>
+  <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+  <script src="dist/index.js"></script>
+</body>
+
+</html>
