@@ -5,7 +5,7 @@ $(document).ready(function() {
   // otherwise send user to landing page (not login?)
 
 //const baseUrl = 'http://localhost:8080'
-const baseUrl = 'https://dry-basin-51330.herokuapp.com'
+const baseUrl = 'https://stormy-scrubland-44609.com'
 
   function redirects() {
     if (localStorage.getItem('token')) {
