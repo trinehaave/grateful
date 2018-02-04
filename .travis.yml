@@ -7,3 +7,6 @@ deploy:
   app: stormy-scrubland-44609
   on:
     repo: trinehaave/grateful
+env:
+  matrix:
+    secure: ozeHKOS/LDG/BfWKsIDmX6XGspoKIl0fmERFyhmtD+KHj5HVFiCB4q8gd7AQ3PJqcBhylJayj1PGYgL/rTncBPeDY+8aqF1wob7ktPMwofKFrJLVA/u8Wv1KDVGLSUa+4NU82mpVnKUgwP8Xnp/iEYB6xV+/7KcTa+7on6Nq+2Qf1u77PN/ibL8m0CvP16Lgotb7M2lwa4e6XmgGl8heI3b1Y5p0W+h5KJ6JE6Umnz1U2oYauwouIvLINC+eoDZuM1Z3h07irjX2eISZypeHAGtv9wahtG6UlniCvw3VWtQBZ2+qtDDOLy3RPBrpnv4hYqi+j4bSv80etgwEQbB44p8fSGG31WvtGFonOz4pVK5YtAL0bvsSpHfqh7LNgzZvN3mmZkneyqEvBULuMBuaMAdAuk4IGBt+B9J5JwLJoJAhOFcwlZ30vQ6T+wuWnh3JZRFGRc4PweK2wDSn7+VEN5mHBq7CZZpP/kjsSWtOCB6NFH2s9FJQocsChEi8qyMjAsGKuoboP+uLQcC233zUDvZg6ChS4cI0hWDSXUYbpFokT+wLwR0nW4hIO4ZCMr3PYsb0Vy/Gq0+zXP9sLzXW/8Cd17gSbVERKWRAArdiD1AV3yKMtCWLczjrUFniB7w3dp1sxRe3kLosIbWieooiwY/quBkZrWvbyKUh/qVs1K0=
