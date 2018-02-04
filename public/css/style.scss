@@ -208,7 +208,7 @@ fieldset {
   display: flex;
   flex-direction: column;
   margin: auto;
-  border-radius: 5px;
+  // border-radius: 5px;
   font-size: 1em;
   text-align: left;
   min-width: 300px;
@@ -294,8 +294,8 @@ i {
 
 .p-landing {
   margin: 0;
-  padding-bottom: 3px;
-  padding-top: 1px;
+  //padding-bottom: 3px;
+  //padding-top: 1px;
   font-weight: 300;
   font-size: 1.2rem;
   font-family: $f-journal;
