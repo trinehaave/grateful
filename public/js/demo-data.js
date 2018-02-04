@@ -8,7 +8,6 @@ const demoData = [
       '1. My mom being the most supportive person in the world\n2. Getting over this crazy cold\n3. Having a great time horse riding with friends\n4. The existence of koalas'
     ],
     'date': 'Fri Jan 15 2018 01:18:53 GMT+0100 (CET)'
-  },
   {
     '_id': '5a4ecfb78ffba24404ea1531',
     'authorId': '5a154a6c2ecef00737530b6f',
