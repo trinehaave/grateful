@@ -83,9 +83,6 @@ returns all registered users
 ##### `/:username`
 returns requested user
 
-#### POST
-creates new user
-
 #### DELETE
 ##### `/:username`
 deletes requested user

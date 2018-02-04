@@ -2,7 +2,7 @@ const express = require('express')
 const EntryModel = require('../models/entries-model')
 const mongoose = require('mongoose')
 const jwt = require('jsonwebtoken')
-// const config = require('../config')
+const config = require('../config')
 mongoose.Promise = global.Promise
 
 const entryCollection = mongoose.connection.collection('entries')
@@ -31,7 +31,7 @@ router.use((req, res, next) => {
     res.status(401).json('Not authorized')
     return
   }
-  jwt.verify(token, process.env.SECRET, (error, decode) => {
+  jwt.verify(token, config.SECRET, (error, decode) => {
     if (error) {
       res.status(500).json({
         message: 'Token is not valid'

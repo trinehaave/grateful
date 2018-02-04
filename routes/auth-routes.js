@@ -3,7 +3,7 @@ const UserModel = require('../models/user-model')
 const mongoose = require('mongoose')
 const passwordHash = require('password-hash')
 const jwt = require('jsonwebtoken')
-// const config = require('../config')
+const config = require('../config')
 mongoose.Promise = global.Promise
 
 const router = express.Router()
