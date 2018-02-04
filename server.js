@@ -1,3 +1,4 @@
+const dotenv = require('dotenv')
 const express = require('express')
 const morgan = require('morgan')
 const mongoose = require('mongoose')
@@ -5,13 +6,16 @@ const bodyParser = require('body-parser')
 const entriesRoutes = require('./routes/entries-routes')
 const userRoutes = require('./routes/user-routes')
 const authRoutes = require('./routes/auth-routes')
-const {DATABASE_URL, PORT} = require('./config')
+// const {DATABASE_URL, PORT} = require('./config')
 mongoose.Promise = global.Promise
 
-//require('./config.js').get(process.env.NODE_ENV)
+dotenv.config({path: './.env'});
 
 const app = express()
-// const port = process.env.PORT || config.PORT
+
+const PORT = process.env.PORT
+const DATABASE_URL = process.env.DATABASE_URL
+
 
 app.use(bodyParser.urlencoded({ extended: false }))
 app.use(bodyParser.json())

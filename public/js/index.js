@@ -4,8 +4,8 @@ $(document).ready(function() {
   // check if localstorage contains token and if token exists call the get all the entries by user
   // otherwise send user to landing page (not login?)
 
-//const baseUrl = 'http://localhost:8080'
-const baseUrl = 'https://stormy-scrubland-44609.herokuapp.com'
+const baseUrl = 'http://localhost:8080'
+// const baseUrl = 'https://stormy-scrubland-44609.herokuapp.com'
 
   function redirects() {
     if (localStorage.getItem('token')) {
