@@ -1,2 +1,9 @@
 language: node_js
 node_js: node
+deploy:
+  provider: heroku
+  api_key:
+    secure: OaDgf5vKUiYpnEmm25847DFm9XTKaz2sE/sOCULLI+sFrJMSOcwTbZrGRvPTpkdeY9j+18ASc9J1+H/eISjyBFJe86GnI6yvbDN4R1pIRHhTvMw14c/cOVV9j9Fv2CkOJV95V15YzbSnXqVSNvkHCP1aQTtOA2WK3WlgzG8BXpkORNGsRtLFuto4pvEdjrncdue/a6c9DBZFeIJCwDY3x5OJSXuEpc+zDH4Pu035B17uDBcXeyywQ2Wx6EWYB1XL+XzLC5lgUhq9mDAreYDLzxGq3QgD0p/T62qiwlcIL1SUy/i75J+Cr0nXreUUt6p/q+x42c3wkP+A5jlPXQ19cwcWErYoJupeuShJz7kSHXMjF5WC0tp8vdKzYogKU+pQJ9YlVs1NckE7u6kC5XZg72u7VzdH3Ef7yi5PgGgjaqUIs3HyA8ec28HbDW2iC3r/xMScgZtvrXDZv9xXOwkmxAVG9Zmxnu8HVaFUGLTvvsCNXJBYIcn9UJ/D9ZWOeZjcdCXbgRQ+Yhk1EVUO48UYy6QTRDvKs6P6lmGM8RtcpvQTiQce99G9dtzxnqvHCqnhLmekuvHHPUlgZv3Qd9G12XpGfq18cy7+OVakPEd7N5758TeUjVGbuUJfy+dJI2nPbh2vDrCJlPZCqQtFSscH2KJbsJhsnzO5HzRB9BAdD4I=
+  app: stormy-scrubland-44609
+  on:
+    repo: trinehaave/grateful
