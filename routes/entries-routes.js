@@ -19,7 +19,7 @@ router.use((req, res, next) => {
   next()
 })
 
-// middleware for login
+// middleware for to verify credentials
 router.use((req, res, next) => {
   if (req.method === 'OPTIONS') {
     res.writeHead(200)

@@ -1,12 +1,13 @@
-const $ = window.$
-
 $(document).ready(function() {
-  // check if localstorage contains token and if token exists call the get all the entries by user
-  // otherwise send user to landing page (not login?)
 
-const baseUrl = 'http://localhost:8080'
-// const baseUrl = 'https://stormy-scrubland-44609.herokuapp.com'
+  //Use baseUrl either for local development or production
+  //const baseUrl = 'http://localhost:8080'
+  const baseUrl = 'https://stormy-scrubland-44609.herokuapp.com'
 
+
+  /* check if localstorage contains token and if token exists call
+  the  make ajax call  to get all the entries by user,
+  otherwise send user to landing page */
   function redirects() {
     if (localStorage.getItem('token')) {
       if (window.location.pathname === '/index.html') {
@@ -44,6 +45,8 @@ const baseUrl = 'http://localhost:8080'
 
   redirects()
 
+  /* Creates the html for each entry that is used when old entries
+  are loaded*/
   let createEntryHtml = function(element, index) {
     let html = ''
     html += '<div>'
@@ -58,6 +61,7 @@ const baseUrl = 'http://localhost:8080'
     return html
   }
 
+function deleteEntry() {
   $('body').on('click', '.delete-button', function(event) {
     let entryToDelete = $(this).parent()
 
@@ -89,229 +93,235 @@ const baseUrl = 'http://localhost:8080'
         }
       })
   })
+}
 
-  $('.entry-button').on('click', function(event) {
-    event.preventDefault()
-    if ($('#first-grateful').val().trim().length < 1) {
-      swal('Please write an entry...\n\n٩(●ᴗ●)۶')
-      return
-    }
-    let textareas = $('textarea')
-    let gratefuls = []
-    let username = 'help'
+deleteEntry()
 
-    textareas.each((index, element) => {
-      gratefuls.push($(element).val())
+  function addEntry() {
+    $('.entry-button').on('click', function(event) {
+      event.preventDefault()
+      if ($('#first-grateful').val().trim().length < 1) {
+        swal('Please write an entry...\n\n٩(●ᴗ●)۶')
+        return
+      }
+      let textareas = $('textarea')
+      let gratefuls = []
+      let username = 'help'
+
+      textareas.each((index, element) => {
+        gratefuls.push($(element).val())
+      })
+      let obj = {
+        gratefuls: gratefuls,
+        name: username,
+        authorId: localStorage.getItem('userId')
+      }
+
+      $.ajax({
+        type: 'POST',
+        url: baseUrl + '/entries',
+        data: JSON.stringify(obj),
+        contentType: 'application/JSON',
+        headers: {
+          'Authorization': localStorage.getItem('token')
+        },
+        success: function(res) {
+          $('.entries-header').removeClass('hidden')
+          $('.entries').prepend(createEntryHtml(res.data, '-'))
+          $('.gratefuls').html('<textarea id="first-grateful"></textarea>')
+        },
+        error: function(err) {
+          console.log(err)
+          swal(
+            ' Something went wrong with saving entries!\n\nç(ó﹏ò｡)'
+          )
+        }
+      })
     })
-    let obj = {
-      gratefuls: gratefuls,
-      name: username,
-      authorId: localStorage.getItem('userId')
+  }
+
+addEntry()
+
+function registerLogin() {
+  $('.login-container form').submit(function(event) {
+    event.preventDefault()
+
+    let username = $(this).find('.js-login').val()
+    let password = $(this).find('.js-login-password').val()
+    let date = moment().format('ddd, MMM Do YYYY')
+    var obj = {
+      username,
+      password,
+      date
     }
 
     $.ajax({
       type: 'POST',
-      url: baseUrl + '/entries',
+      url: baseUrl + '/auth/login',
       data: JSON.stringify(obj),
       contentType: 'application/JSON',
-      headers: {
-        'Authorization': localStorage.getItem('token')
-      },
       success: function(res) {
-        $('.entries-header').removeClass('hidden')
-        $('.entries').prepend(createEntryHtml(res.data, '-'))
-        $('.gratefuls').html('<textarea id="first-grateful"></textarea>')
+        localStorage.setItem('token', res.token)
+        localStorage.setItem('userId', res.userId)
+        window.location.href = '/index.html'
       },
       error: function(err) {
         console.log(err)
         swal(
-          ' Something went wrong with saving entries!\n\nç(ó﹏ò｡)'
+          'Username and/or password is wrong\n\n(ó﹏ò｡)'
         )
       }
     })
   })
+}
 
-  function registerLogin() {
-    $('.login-container form').submit(function(event) {
-      event.preventDefault()
+registerLogin()
 
-      let username = $(this).find('.js-login').val()
-      let password = $(this).find('.js-login-password').val()
-      let date = moment().format('ddd, MMM Do YYYY')
-      var obj = {
-        username,
-        password,
-        date
-      }
+function logout() {
+  $('nav').on('click', '.logout-button', function() {
+    localStorage.clear()
+    window.location.href = '/login.html'
+  })
+}
 
-      $.ajax({
-        type: 'POST',
-        url: baseUrl + '/auth/login',
-        data: JSON.stringify(obj),
-        contentType: 'application/JSON',
-        success: function(res) {
-          localStorage.setItem('token', res.token)
-          localStorage.setItem('userId', res.userId)
-          window.location.href = '/index.html'
-        },
-        error: function(err) {
-          console.log(err)
-          swal(
-            'Username and/or password is wrong\n\n(ó﹏ò｡)'
-          )
-        }
-      })
-    })
-  }
+logout()
 
-  registerLogin()
+function registerSignUp() {
+  $('.signup-container form').submit(function(event) {
+    event.preventDefault()
 
-  function logout() {
-    $('nav').on('click', '.logout-button', function() {
-      localStorage.clear()
-      window.location.href = '/login.html'
-    })
-  }
+    let username = $(this).find('.js-username').val()
+    let password = $(this).find('.js-password').val()
+    let date = moment().format('ddd, MMM Do YYYY')
+    var obj = {
+      username,
+      password,
+      date
+    }
 
-  logout()
-
-  function registerSignUp() {
-    $('.signup-container form').submit(function(event) {
-      event.preventDefault()
-
-      let username = $(this).find('.js-username').val()
-      let password = $(this).find('.js-password').val()
-      let date = moment().format('ddd, MMM Do YYYY')
-      var obj = {
-        username,
-        password,
-        date
-      }
-
-
-
-      $.ajax({
-        type: 'POST',
-        url: baseUrl + '/auth/register',
-        data: JSON.stringify(obj),
-        contentType: 'application/JSON',
-        success: function(obj) {
-          swal("Your account has been created!\n\nPlease log in\n\n｡^‿^｡", {
-            buttons: false,
-            timer: 2500,
-          })
-          setTimeout(function() {
-            window.location.href = '/login.html'
-          }, 2500)
-        },
-        error: function(err) {
-          console.log(err)
-          swal(
-            ' Username already exists\n\n(ó﹏ò｡)'
-          )
-        }
-      })
-    })
-  }
-
-  registerSignUp()
-
-  function editEntry() {
-    $('body').on('click', '.edit-button', function(event) {
-      event.preventDefault()
-
-      let entryToEdit = $(this).siblings('ul').text()
-
-      let textareaHtml = '<form class="edited-entry">' +
-        '<div class="gratefuls-edited">' +
-        '<textarea id="first-grateful" class="small-textarea" cols="37" wrap="hard">' +
-        entryToEdit +
-        '</textarea>' +
-        '</div>' +
-        '<button class="save-edit-button submit-button" type="submit"><span class="fa fa-check"></span>save</button>' +
-        '<button class="cancel-button submit-button" type="submit"><span class="fa fa-ban"></span>cancel</button>' +
-        '</form>'
-
-      $(this).siblings('ul').addClass('hidden')
-      $(this).siblings('button').addClass('hidden')
-      $(this).addClass('hidden')
-
-      $(this).parent('div').append(textareaHtml)
-    })
-  }
-
-  editEntry()
-
-  function saveEdit(obj, id) {
     $.ajax({
-      type: 'PUT',
-      url: baseUrl + '/entries/' + id,
+      type: 'POST',
+      url: baseUrl + '/auth/register',
       data: JSON.stringify(obj),
       contentType: 'application/JSON',
-      headers: {
-        'Authorization': localStorage.getItem('token')
-      },
-      success: function(res) {
-        // TODO: On success what?
+      success: function(obj) {
+        swal("Your account has been created!\n\nPlease log in\n\n｡^‿^｡", {
+          buttons: false,
+          timer: 2500,
+        })
+        setTimeout(function() {
+          window.location.href = '/login.html'
+        }, 2500)
       },
       error: function(err) {
         console.log(err)
         swal(
-          ' Something went wrong with editing entry!\n\n(ó﹏ò｡)'
+          ' Username already exists\n\n(ó﹏ò｡)'
         )
       }
     })
-  }
+  })
+}
 
-  function saveEdited() {
-    $('body').on('click', '.save-edit-button', function(event) {
-      event.preventDefault()
-      let text = $('.gratefuls-edited').children().val()
-      let id = $(this).parents('form').siblings('.delete-button').attr('value')
-      let obj = {
-        gratefuls: text
-      }
-      $(this).parents('form').siblings('ul').html('<li class="grateful-entry">' + text + '</li>')
-      $(this).parents('form').siblings('.hidden').removeClass('hidden')
-      $(this).closest('form').remove()
+registerSignUp()
 
-      saveEdit(obj, id)
-    })
-  }
+function editEntry() {
+  $('body').on('click', '.edit-button', function(event) {
+    event.preventDefault()
 
-  saveEdited()
+    let entryToEdit = $(this).siblings('ul').text()
 
-  function cancelEdit() {
-    $('body').on('click', '.cancel-button', function(event) {
-      event.preventDefault()
-      $(this).parents('form').siblings('.hidden').removeClass('hidden')
-      $(this).closest('form').remove()
-    })
-  }
+    let textareaHtml = '<form class="edited-entry">' +
+      '<div class="gratefuls-edited">' +
+      '<textarea id="first-grateful" class="small-textarea" cols="37" wrap="hard">' +
+      entryToEdit +
+      '</textarea>' +
+      '</div>' +
+      '<button class="save-edit-button submit-button" type="submit"><span class="fa fa-check"></span>save</button>' +
+      '<button class="cancel-button submit-button" type="submit"><span class="fa fa-ban"></span>cancel</button>' +
+      '</form>'
 
-  cancelEdit()
+    $(this).siblings('ul').addClass('hidden')
+    $(this).siblings('button').addClass('hidden')
+    $(this).addClass('hidden')
 
-  function signupRedirect() {
-    $('body').on('click', '.landing-sign-up', function(event) {
-      window.location.href = '/signup.html'
-    })
-  }
+    $(this).parent('div').append(textareaHtml)
+  })
+}
 
-  signupRedirect()
+editEntry()
 
-  function demoRedirect() {
-    $('body').on('click', '.demo-button', function(event) {
-      window.location.href = '/demo.html'
-    })
-  }
+function saveEdit(obj, id) {
+  $.ajax({
+    type: 'PUT',
+    url: baseUrl + '/entries/' + id,
+    data: JSON.stringify(obj),
+    contentType: 'application/JSON',
+    headers: {
+      'Authorization': localStorage.getItem('token')
+    },
+    success: function(res) {
+      // TODO: On success what?
+    },
+    error: function(err) {
+      console.log(err)
+      swal(
+        ' Something went wrong with editing entry!\n\n(ó﹏ò｡)'
+      )
+    }
+  })
+}
 
-  demoRedirect()
+function saveEdited() {
+  $('body').on('click', '.save-edit-button', function(event) {
+    event.preventDefault()
+    let text = $('.gratefuls-edited').children().val()
+    let id = $(this).parents('form').siblings('.delete-button').attr('value')
+    let obj = {
+      gratefuls: text
+    }
+    $(this).parents('form').siblings('ul').html('<li class="grateful-entry">' + text + '</li>')
+    $(this).parents('form').siblings('.hidden').removeClass('hidden')
+    $(this).closest('form').remove()
 
-  function loginRedirect() {
-    $('body').on('click', '.goto-login-button', function(event) {
-      window.location.href = '/login.html'
-    })
-  }
+    saveEdit(obj, id)
+  })
+}
 
-  loginRedirect()
+saveEdited()
+
+function cancelEdit() {
+  $('body').on('click', '.cancel-button', function(event) {
+    event.preventDefault()
+    $(this).parents('form').siblings('.hidden').removeClass('hidden')
+    $(this).closest('form').remove()
+  })
+}
+
+cancelEdit()
+
+function signupRedirect() {
+  $('body').on('click', '.landing-sign-up', function(event) {
+    window.location.href = '/signup.html'
+  })
+}
+
+signupRedirect()
+
+function demoRedirect() {
+  $('body').on('click', '.demo-button', function(event) {
+    window.location.href = '/demo.html'
+  })
+}
+
+demoRedirect()
+
+function loginRedirect() {
+  $('body').on('click', '.goto-login-button', function(event) {
+    window.location.href = '/login.html'
+  })
+}
+
+loginRedirect()
+
 })

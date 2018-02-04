@@ -30,6 +30,7 @@ body {
 a {
   color: $c-active;
 }
+
 /* Typography */
 h1 {
   font-family: $f-header;
@@ -82,6 +83,7 @@ ul {
 li {
   margin-right: 10px;
 }
+
 /* Forms */
 button,
 input {
@@ -200,6 +202,7 @@ input[type=submit] {
 fieldset {
   border: none;
 }
+
 /* Layout */
 .flex-container {
   display: flex;
@@ -256,7 +259,8 @@ fieldset {
 
 .flex-container.four,
 .flex-container.three {
-  max-width: 50%;
+  width: 50%;
+  max-width: 800px;
   margin: 0;
   padding: 30px;
 
@@ -323,6 +327,7 @@ img.landing {
     min-width: 200px;
   }
 }
+
 /* Login Styles */
 .login-container,
 .signup-container {
@@ -350,6 +355,7 @@ img.landing {
     background: linear-gradient(115deg,#fff 27%,#f49e8b 99%);
   }
 }
+
 /* New Layout */
 .navigation {
   position: fixed;
@@ -412,6 +418,7 @@ textarea {
   font-size: 1.5rem;
   line-height: 1.5;
 }
+
 /* Credit */
 .landing-body .made-by,
 .signin-body .made-by {
@@ -450,6 +457,7 @@ article.p-landing {
     font-weight: 800;
   }
 }
+
 /* swal styles */
 .swal-modal {
   background-color: #fff;

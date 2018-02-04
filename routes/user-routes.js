@@ -33,21 +33,6 @@ router.route('/:username')
         })
     })
 
-router.route('/')
-  .post((req, res) => {
-    let newUser = new UserModel()
-    newUser.username = req.body.username
-    newUser.password = req.body.password
-
-    newUser.save()
-      .then(() => {
-        res.status(200).send('User has been saved')
-      })
-      .catch(() => {
-        res.status(500).send('Something went wrong :(')
-      })
-  })
-
 router.route('/deleteAll')
   .delete((req, res) => {
     userCollection.drop()

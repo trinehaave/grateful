@@ -8,8 +8,7 @@ const {
 
 mongoose.Promise = global.Promise
 
-// this makes the should syntax available throughout
-// this module
+// this makes the should syntax available throughout this module
 const should = chai.should()
 
 const entries = require('../models/entries-model')
@@ -24,10 +23,8 @@ let userId
 
 chai.use(chaiHttp)
 
-// this function deletes the entire database.
-// we'll call it in an `afterEach` block below
-// to ensure  ata from one test does not stick
-// around for next one
+/* this function deletes the entire database. It is run after
+each test run so that the database is clean for the next test */
 function tearDownDb () {
   return new Promise((resolve, reject) => {
     console.warn('Deleting database')
@@ -48,6 +45,7 @@ describe('entries API resource', function () {
     return closeServer()
   })
 
+// test GET
   describe('GET endpoint', function () {
     it('should register new user', function () {
       let res
@@ -91,17 +89,6 @@ describe('entries API resource', function () {
         .then((_res) => {
           res = _res
           res.should.have.status(200)
-        })
-    })
-
-    it('should test to see if status code 200 and html is returned', function () {
-      let res
-      return chai.request(app)
-        .get('/')
-        .then(_res => {
-          res = _res
-          res.should.have.status(200)
-          res.should.be.html
         })
     })
 

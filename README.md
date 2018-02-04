@@ -1,6 +1,6 @@
 # Gratitude Journal App  [![Build Status](https://travis-ci.org/trinehaave/grateful.svg?branch=master)](https://travis-ci.org/trinehaave/grateful)
 
-A [journalling app](https://stormy-scrubland-44609.herokuapp.com/landing.html) where you can register an account, log in and post journal entries about the things - large and small - that you are grateful for.  The app is ideally used at night focusing on the day that just passed - on the people you encountered and  events and things that happened that you appreciated. By consistently journalling in this way you are training your brain to have a more gratitude-focused mindset  and this is proven to make people happier and healthier.  You can decide entirely if you want to post a short list of things or go into more depth with a longer entry - the important part is to think about and write down some of the things you are grateful for.
+A [journalling app](https://stormy-scrubland-44609.herokuapp.com/landing.html) where you can register an account, log in and post journal entries about the things - large and small - that you are grateful for.  The app is ideally used at night focusing on the day that just passed - on the people you encountered and  events and things that happened that you appreciated. By consistently journalling in this way you are training your brain to have a more gratitude-focused mindset  and this is proven to make people happier and healthier.  You can decide entirely if you want to post a short list of things or go into more depth with a longer entry - the important part is to think about and write down some of the things you are grateful for. You can try the demo without creating an account by clicking 'demo' in the menu on the landing page.
 
 ## Screenshots
 ![landing page screenshot](./public/image/landing-page.png)
@@ -9,6 +9,13 @@ A [journalling app](https://stormy-scrubland-44609.herokuapp.com/landing.html) w
 ![journal screenshot](./public/image/screenshot.png)
 
 ## Setup
+
+* clone repo
+* cd into directory
+* `$ npm install`
+* `$ npm start`
+* `$ cd public`
+* `$ gulp watch`  - this is important if you are making changes to the files in the   public folder
 
 
 ## Technologies and Libraries

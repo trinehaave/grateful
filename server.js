@@ -1,4 +1,3 @@
-
 const express = require('express')
 const morgan = require('morgan')
 const mongoose = require('mongoose')
@@ -6,21 +5,26 @@ const bodyParser = require('body-parser')
 const entriesRoutes = require('./routes/entries-routes')
 const userRoutes = require('./routes/user-routes')
 const authRoutes = require('./routes/auth-routes')
-const {DATABASE_URL, PORT} = require('./config')
+const {
+  DATABASE_URL,
+  PORT
+} = require('./config')
 mongoose.Promise = global.Promise
 
 const app = express()
 
-
-app.use(bodyParser.urlencoded({ extended: false }))
+app.use(bodyParser.urlencoded({
+  extended: false
+}))
 app.use(bodyParser.json())
 
 app.use(morgan('common'))
 
 app.use(express.static(__dirname + '/public'))
 
+/* any call that starts with /entries, use entriesRoutes
+which is found at ./routes/entries-routes and so on */
 app.use('/entries', entriesRoutes)
-// any call that starts with /entries, use entriesRoutes (entriesRoutes is the routes/entries-routes.js)
 
 app.use('/user', userRoutes)
 
@@ -30,7 +34,9 @@ let server
 
 function runServer (databaseUrl = DATABASE_URL, port = PORT) {
   return new Promise((resolve, reject) => {
-    mongoose.connect(databaseUrl, { useMongoClient: true })
+    mongoose.connect(databaseUrl, {
+      useMongoClient: true
+    })
     let db = mongoose.connection
     db.on('error', err => {
       mongoose.disconnect()
@@ -49,23 +55,30 @@ function runServer (databaseUrl = DATABASE_URL, port = PORT) {
 
 function closeServer () {
   return mongoose.disconnect()
-        .then(() => {
-          return new Promise((resolve, reject) => {
-            console.log('closing server')
-            server.close((err) => {
-              process.exit(0)
-              if (err) {
-                return reject()
-              }
-              resolve()
-            })
-          })
+    .then(() => {
+      return new Promise((resolve, reject) => {
+        console.log('closing server')
+        server.close((err) => {
+          process.exit(0)
+          if (err) {
+            return reject()
+          }
+          resolve()
         })
+      })
+    })
 }
-// if server.js is called directly (aka, with `node server.js`), this block
-// runs. but we also export the runServer command so other code (for instance, test code) can start the server as needed.
+
+/* if server.js is called directly (aka, with `node server.js`), this block
+ runs. but we also export the runServer command so other code
+(for instance test code) can start the server as needed. */
+
 if (require.main === module) {
   runServer().catch(err => console.error(err))
 }
 
-module.exports = { runServer, app, closeServer }
+module.exports = {
+  runServer,
+  app,
+  closeServer
+}

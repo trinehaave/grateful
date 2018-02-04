@@ -1,6 +1,5 @@
-const $ = window.$
-
 $(document).ready(function () {
+
   let createEntryHtml = function (element, index) {
     let html = ''
     html += '<div>'

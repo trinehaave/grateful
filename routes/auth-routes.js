@@ -17,6 +17,7 @@ router.use((req, res, next) => {
   next()
 })
 
+// create new user account
 router.route('/register')
   .post((req, res) => {
     UserModel.findOne({
