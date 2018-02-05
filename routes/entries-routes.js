@@ -48,7 +48,7 @@ router.route('/searchByUser/:userId')
     EntryModel
       .find({authorId: req.params.userId})
       .sort({
-        date: -1
+        date: 1
       })
       .then((entries) => {
         res.status(200).json(entries)
