@@ -46,7 +46,9 @@ router.use((req, res, next) => {
 router.route('/searchByUser/:userId')
   .get((req, res) => {
     EntryModel
-      .find({authorId: req.params.userId})
+      .find({
+        authorId: req.params.userId
+      })
       .sort({
         date: 1
       })
@@ -62,8 +64,8 @@ router.route('/searchByUser/:userId')
 router.route('/:entryId')
   .get((req, res) => {
     EntryModel.find({
-      _id: req.params.entryId
-    })
+        _id: req.params.entryId
+      })
       .then((entry) => {
         res.status(200).json(entry)
       })
@@ -108,8 +110,8 @@ router.route('/deleteAll')
 router.route('/delete/:entryId')
   .delete((req, res) => {
     EntryModel.findOneAndRemove({
-      _id: req.params.entryId
-    })
+        _id: req.params.entryId
+      })
       .then(() => {
         res.status(200).send('Entry has been deleted')
       })
@@ -132,7 +134,7 @@ router.route('/:entryId')
     }, {
       new: true
     }).exec(
-      function (err, entry) {
+      function(err, entry) {
         if (err || !entry) {
           console.log(err)
           return res.status(500).json({
