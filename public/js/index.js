@@ -223,6 +223,7 @@ function registerSignUp() {
   })
 }
 
+
 registerSignUp()
 
 function editEntry() {

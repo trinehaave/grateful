@@ -1,7 +1,9 @@
 let gulp = require('gulp')
 let sass = require('gulp-sass')
 let minifyCss = require('gulp-clean-css')
-let minifyJs = require('gulp-uglifyes') // regular uglify does not work with ES6
+//let minifyJs = require('gulp-uglifyes') // regular uglify does not work with ES6
+let rename = require("gulp-rename");
+let uglify = require('gulp-uglify-es').default;
 let gutil = require('gulp-util')
 let plumber = require('gulp-plumber')
 let autoprefixer = require('gulp-autoprefixer')
@@ -29,9 +31,9 @@ gulp.task('sass', function () {
     .pipe(browserSync.stream())
 })
 
-gulp.task('minify-js', () => {
+gulp.task('uglify', () => {
   gulp.src('js/*.js')
-    .pipe(minifyJs())
+    .pipe(uglify())
     .on('error', swallowError)
     .pipe(gulp.dest('dist'))
     .pipe(browserSync.stream())
@@ -44,6 +46,6 @@ gulp.task('watch', function () {
     }
   })
   gulp.watch('css/*.scss', ['sass'])
-  gulp.watch('js/*.js', ['minify-js'])
+  gulp.watch('js/*.js', ['uglify'])
   gulp.watch('*.html', browserSync.reload)
 })
