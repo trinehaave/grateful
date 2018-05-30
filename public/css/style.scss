@@ -3,7 +3,6 @@ $c-active: #F49E8B;
 $f-body: "futura-pt",sans-serif;
 $f-header: "futura-pt",sans-serif;
 $f-journal: "freight-text-pro",serif;
-
 /* Global */
 * {
   box-sizing: border-box;
@@ -30,7 +29,6 @@ body {
 a {
   color: $c-active;
 }
-
 /* Typography */
 h1 {
   font-family: $f-header;
@@ -83,7 +81,6 @@ ul {
 li {
   margin-right: 10px;
 }
-
 /* Forms */
 button,
 input {
@@ -202,7 +199,6 @@ input[type=submit] {
 fieldset {
   border: none;
 }
-
 /* Layout */
 .flex-container {
   display: flex;
@@ -212,7 +208,6 @@ fieldset {
   font-size: 1em;
   text-align: left;
   min-width: 300px;
-
 
   &.middle,
   &.one {
@@ -263,7 +258,6 @@ fieldset {
   max-width: 800px;
   margin: 0;
   padding: 30px;
-
   @media only screen and (max-width: 800px) {
     padding: 0;
     max-width: 90%;
@@ -327,7 +321,6 @@ img.landing {
     min-width: 200px;
   }
 }
-
 /* Login Styles */
 .login-container,
 .signup-container {
@@ -355,7 +348,6 @@ img.landing {
     background: linear-gradient(115deg,#fff 27%,#f49e8b 99%);
   }
 }
-
 /* New Layout */
 .navigation {
   position: fixed;
@@ -418,7 +410,6 @@ textarea {
   font-size: 1.5rem;
   line-height: 1.5;
 }
-
 /* Credit */
 .landing-body .made-by,
 .signin-body .made-by {
@@ -457,7 +448,6 @@ article.p-landing {
     font-weight: 800;
   }
 }
-
 /* swal styles */
 .swal-modal {
   background-color: #fff;

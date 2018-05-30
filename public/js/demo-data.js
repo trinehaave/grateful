@@ -1,4 +1,3 @@
-
 const demoData = [
 
   {
@@ -9,7 +8,7 @@ const demoData = [
       '1. Oslo weather bringing it\n2. The return of Westworld\n3. The existence of koalas'
     ],
     'date': 'Fri May 25 2018 01:18:53 GMT+0100 (CET)'
-    },
+  },
   {
     '_id': '5a4ecfb78ffba24404ea1531',
     'authorId': '5a154a6c2ecef00737530b6f',

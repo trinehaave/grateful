@@ -1,18 +1,18 @@
 let gulp = require('gulp')
 let sass = require('gulp-sass')
 let minifyCss = require('gulp-clean-css')
-let uglify = require('gulp-uglify-es').default;
+let uglify = require('gulp-uglify-es').default
 let gutil = require('gulp-util')
 let plumber = require('gulp-plumber')
 let autoprefixer = require('gulp-autoprefixer')
 let browserSync = require('browser-sync').create()
 
-function swallowError (error) {
+function swallowError(error) {
   console.log(error.toString())
   this.emit('end')
 }
 
-gulp.task('sass', function () {
+gulp.task('sass', function() {
   gulp.src('css/*.scss')
     .pipe(sass())
     .on('error', swallowError)
@@ -21,7 +21,7 @@ gulp.task('sass', function () {
       cascade: false
     }))
     .pipe(minifyCss())
-    .pipe(plumber(function (error) {
+    .pipe(plumber(function(error) {
       gutil.log(error.message)
       this.emit('end')
     }))
@@ -37,7 +37,7 @@ gulp.task('uglify', () => {
     .pipe(browserSync.stream())
 })
 
-gulp.task('watch', function () {
+gulp.task('watch', function() {
   browserSync.init({
     server: {
       baseDir: './'

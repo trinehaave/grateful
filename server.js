@@ -32,7 +32,7 @@ app.use('/auth', authRoutes)
 
 let server
 
-function runServer (databaseUrl = DATABASE_URL, port = PORT) {
+function runServer(databaseUrl = DATABASE_URL, port = PORT) {
   return new Promise((resolve, reject) => {
     mongoose.connect(databaseUrl, {
       useMongoClient: true
@@ -53,7 +53,7 @@ function runServer (databaseUrl = DATABASE_URL, port = PORT) {
   })
 }
 
-function closeServer () {
+function closeServer() {
   return mongoose.disconnect()
     .then(() => {
       return new Promise((resolve, reject) => {
