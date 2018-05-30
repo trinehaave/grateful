@@ -14,7 +14,7 @@ const demoData = [
     'authorId': '5a154a6c2ecef00737530b6f',
     '__v': 0,
     'gratefuls': [
-      '1. Stack overflow coming to the rescue when I broke the build for the 70th time this evening\n2. Yoga\n3. Going to South Africa'
+      '1. Stack overflow coming to the rescue when I broke the build for the 70th time this evening\n2. Going to South Africa\n3. Quality time with family'
     ],
     'date': 'Thu May 24 2018 01:18:53 GMT+0100 (CET)'
   },
@@ -23,7 +23,7 @@ const demoData = [
     'authorId': '5a154a6c2ecef00737530b6f',
     '__v': 0,
     'gratefuls': [
-      '1. Having a great time horse riding with friends\n2. Getting a new vacuum cleaner that actually works\n3. Going to South Africa'
+      '1. Having a great time horse riding with friends\n2. Getting a new vacuum cleaner that actually works\n3. Yoga'
     ],
     'date': 'Wed May 23 2018 01:18:53 GMT+0100 (CET)'
   }
