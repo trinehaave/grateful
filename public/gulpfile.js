@@ -1,8 +1,6 @@
 let gulp = require('gulp')
 let sass = require('gulp-sass')
 let minifyCss = require('gulp-clean-css')
-//let minifyJs = require('gulp-uglifyes') // regular uglify does not work with ES6
-let rename = require("gulp-rename");
 let uglify = require('gulp-uglify-es').default;
 let gutil = require('gulp-util')
 let plumber = require('gulp-plumber')
